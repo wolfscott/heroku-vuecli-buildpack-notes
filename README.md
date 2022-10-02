@@ -22,7 +22,7 @@ I get frustrated quickly with these tutorials that say things like "how to publi
 1. Add 2 configuration files to our project
 1. Push the code
 
-NOTE: You can find the code mentioned here in my repo:  (this is NOT a buildpack, just notes)
+NOTE: You can find the code mentioned here in my repo:  (the below item is NOT a buildpack, just notes)
 
 <https://github.com/wolfscott/heroku-vuecli-buildpack-notes>
 
@@ -33,7 +33,8 @@ NOTE: You can find the code mentioned here in my repo:  (this is NOT a buildpack
 Let’s start with the build pack.  Log into Heroku and navigate to your Dyno configuration.  
 
 * Remove the “Heroku-buildpack-static” build pack 
-* Add the “**heroku-community/nginx**"  (after adding this line, Heroku expands it to look like this: "https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/nginx.tgz“) 
+* Add the “**heroku-community/nginx**"  (after adding this line, Heroku expands it to look like this: "https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/nginx.tgz“) I put it on its own line for easy copy.
+  * **heroku-community/nginx**
  
 If you are unsure how to do this, [x] the old one, and select Add Buildpack button, and paste in the new item above.
 
