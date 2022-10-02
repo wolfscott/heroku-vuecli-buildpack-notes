@@ -100,19 +100,6 @@ http {
     server_name _;
     keepalive_timeout 5;
     client_max_body_size <%= ENV['NGINX_CLIENT_MAX_BODY_SIZE'] || 1 %>M;
-
-    # location / {
-    # 	# force SSL/redirect http -> https
-    # 	if ($http_x_forwarded_proto != "https") {
-    # 	  return 301 https://$host$request_uri;
-    # 	}
-
-    #   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    # 	proxy_set_header Host $http_host;
-    # 	proxy_redirect off;
-    # 	proxy_pass http://127.0.0.0/;
-      
-    # }
     
     location / {
 
