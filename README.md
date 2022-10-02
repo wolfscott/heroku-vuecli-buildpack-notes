@@ -28,7 +28,7 @@ NOTE: You can find the code mentioned here in my repo:
 
 ### Step 1
 
-Let’s start with the build pack.  You should remove the “Heroku-buildpack-static” build pack and add the “https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/nginx.tgz “ which then will look like this.  If you are unsure how to do this, [x] the old one, and select Add Buildpack button, and paste in the new item above.
+Let’s start with the build pack.  Log into Heroku and navigate to your Dyno configuration.  You should remove the “Heroku-buildpack-static” build pack and add the “https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/nginx.tgz “ which then will look like this.  If you are unsure how to do this, [x] the old one, and select Add Buildpack button, and paste in the new item above.
 
 If you are setting this up as a new publishing method, just make sure your result looks like this:
 
