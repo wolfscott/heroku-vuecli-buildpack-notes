@@ -2,6 +2,8 @@
 
 > 01-Oct-22 Wolf Scott  (www.ioihan.com)
 
+> If you have comments, suggestions, or any updated information, PLEASE pass it on - or even send a PR if that's easier.
+
 ## After the heroku-buildpack-static deprecation
 
 The only constant in life is change the saying goes. Heroku decided to deprecate the **heroku-buildpack-static** build package and while they may have given a warning on this action, I sure didn't see it. It followed right on the heels of their mortarium on publishing code.
@@ -145,7 +147,11 @@ Once you have these files in place and ready, you should be good to push by what
 
 #### Some notes
 
-- The VueJS CLI application builds to a static site.  Thus, no dev-dependencice should be flagged as "missing" when launching the app.
+- We are seeking to publish in "production" mode.
+
+- The build defaults to \dist folder, which should be a self-contained "bundle" (not really a bundle but that folder should be able to be easily copied and the dropped into a static site and served)
+
+- The VueJS CLI application, production build, builds to a static site.  Thus, no dev-dependencice should be flagged as "missing" when launching the app.
 
 - Some have mentioned that after deployment that the @vue/cli-service package is not found. I've seen many recommendations, but remember that this package is a development-environment (dev dependency) so if this is being required, you are not serving your new app from the /dist folder, which is a pre-built static resource.
 
