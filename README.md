@@ -22,17 +22,22 @@ I get frustrated quickly with these tutorials that say things like "how to publi
 1. Add 2 configuration files to our project
 1. Push the code
 
-NOTE: You can find the code mentioned here in my repo:  
+NOTE: You can find the code mentioned here in my repo:  (this is NOT a buildpack, just notes)
 
 <https://github.com/wolfscott/heroku-vuecli-buildpack-notes>
 
-> *NOTE: I am assuming that the target Dyno is connected to and published from GitHub*. These docs are written from that perspective, and of course, has no connection to the above mentioned repo. 
+> Note that I am assuming that the target Dyno is connected to and published from GitHub*. These docs are written from that perspective, and of course, has no connection to the above mentioned repo. 
 
 ### Step 1
 
-Let’s start with the build pack.  Log into Heroku and navigate to your Dyno configuration.  You should remove the “Heroku-buildpack-static” build pack and add the “https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/nginx.tgz “ which then will look like this.  If you are unsure how to do this, [x] the old one, and select Add Buildpack button, and paste in the new item above.
+Let’s start with the build pack.  Log into Heroku and navigate to your Dyno configuration.  
 
-If you are setting this up as a new publishing method, just make sure your result looks like this:
+* Remove the “Heroku-buildpack-static” build pack 
+* Add the “**heroku-community/nginx**"  (after adding this line, Heroku expands it to look like this: "https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/nginx.tgz“) 
+ 
+If you are unsure how to do this, [x] the old one, and select Add Buildpack button, and paste in the new item above.
+
+If you are setting this up as a new publishing method, just make sure your final result looks like this: 
 
 This can be found on the **SETTINGS** Tab, mid-page.
 
