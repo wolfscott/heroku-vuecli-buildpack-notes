@@ -8,40 +8,46 @@ The only constant in life is change the saying goes. Heroku decided to deprecate
 
 The replacement to this build pack was so not an obvious thing for me and took me some digging to find these pieces. If you know of a better way, please do share. I record these settings to hopefully save someone some time AND of course, I pen it here for my future-self as I have several more apps to swap over.
 
-There are several steps to make this work. I am not a big command-line, script, fan when working with Heroku which evidently is frowned upon but these steps won't require any use of the Heroku cli.
+There are several steps to make this work. I am not a big command-line, script, fan when working with Heroku which evidently is frowned upon but these steps will not require any use of the Heroku cli.
 
-I get frustrated quickly with these tutorials that say things like "how to publish..." and such titles and spend 95% of the tutorial showing how to create an app. But, to quote Richard, we digest.
+I get frustrated quickly with these tutorials that say things like "how to publish..." and such titles and spend 95% of the tutorial showing how to create an app. Not the case here - this is the final stpe(s) only. But, to quote Richard Beverly, we digest.
+
+> **Personal commentary**:  I will say that I'm disapointed in Heroku on this point - their claim, and appeal, has been "easy" and this deployment was SO NOT easy!  Looking at these two files, the result is straight forward.  Perhaps for those brainiacs out there this is a DUH item, but was not so for me.
 
 ## What we want to accomplish:
 
-1. Swap out the build pack configuration
-1. Drop in a few configuration files
-1. Push your code
+1. Swap out the build pack configuration in the Heroku UI
+1. Add 2 configuration files to our project
+1. Push the code
 
 NOTE: You can find the code mentioned here in my repo:  
 
 <https://github.com/wolfscott/heroku-vuecli-buildpack-notes>
 
-> *NOTE: I am assuming that your Dyno is connected to GitHub*   
-> 
+> *NOTE: I am assuming that the target Dyno is connected to and published from GitHub*. These docs are written from that perspective, and of course, has no connection to the above mentioned repo. 
+
 ### Step 1
 
 Let’s start with the build pack.  You should remove the “Heroku-buildpack-static” build pack and add the “https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/nginx.tgz “ which then will look like this.  If you are unsure how to do this, [x] the old one, and select Add Buildpack button, and paste in the new item above.
+
+If you are setting this up as a new publishing method, just make sure your result looks like this:
+
+This can be found on the **SETTINGS** Tab, mid-page.
 
 ![](docs/Aspose.Words.bf36cf5d-c41a-47ee-9fba-9fd0907918a0.001.png)
 
 ### Step 2
 
-The second part of this involves adding two new files.  If you already have these files then I think the task would be to compare the settings carefully as I’ve tried the recommended “defaults” and they did not work for me unmodified.  In fairness, I’m not sure they were supposed to work out of the box, but I was spoiled with the old build pack – it just worked.  
+The second part of this involves adding two new files to the project.  If you already have these files in your project then I think the task would be to compare the settings carefully as I’ve tried the recommended “defaults” and they did not work for me unmodified.  In fairness, I’m not sure they were supposed to work out of the box, but I was spoiled with the old build pack – it just worked.  
 
 So, the two files are:  (I’ll discuss what goes into them in a moment)
 
 - \Procfile
 - \config\nginx.conf.erb
 
-I was thrown by the extension of .erb, but turns out that yep, that extension -IS- required.  The Procfile has a cap first letter and NO extension. The other is all lower, just saying.   There was also some mention of a unicorn file which totally messed me up but that file is not required, as you see the only file in the config folder. (note that that this config is in the root folder and NOT in the \src folder as would be the case for app-level config stuff) 
+I was thrown by the extension of .erb, but turns out that yep, that extension -IS- required.  **The Procfile has a cap first letter and NO extension**. The other is all lower, just saying.   There was also some mention of a unicorn file which totally messed me up but that file is not required for a VueJS CLI project, as you see the only file in the config folder. (note that that this config is in the root folder and NOT in the \src folder as would be the case for app-level config stuff) 
 
-The pathnames are based on your apps root and in fact for my VueJS cli app, these are the actual pathnames, as shown for the config example. You should see the package.json and dist folders so that should clarify the “where”. 
+The pathnames are based on your apps root and in fact for my VueJS cli app, the images show the actual pathnames. You see the package.json and dist folders so that should clarify the “where”. 
 
 ![](docs/Aspose.Words.bf36cf5d-c41a-47ee-9fba-9fd0907918a0.002.png)
 
@@ -49,10 +55,14 @@ The pathnames are based on your apps root and in fact for my VueJS cli app, thes
 
 **nginx.conf.erb** contents (this handles the nginx related config AND the url rewrite required when refreshing a VueJS SPA application to send all relative paths back to index.html)   I’ve included the config text here and you should be able to quickly find the different parts of interest. (or refer to the repo at the top of this document)
 
+>>NOTE: That I reference the NOTES under the "buildpack" but this is for reference only and this repo is NOT a buildpack compatible entry and entering this repo into the buildpack area will fail. Well, it gets accepted but won't work - :)
+
 ``` rb
 # 01-Oct-22 :: Wolf Scott ::  wscott@ioihan.com
 # -------------------------------------------------------------------------------
 # Old Buildpack: https: //github.com/heroku/heroku-buildpack-nginx
+# -------------------------------------------------------------------------------
+#
 # New Docs     : https: //github.com/wolfscott/heroku-vuecli-buildpack-notes
 # -------------------------------------------------------------------------------
 daemon off;
