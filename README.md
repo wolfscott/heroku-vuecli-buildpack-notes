@@ -145,11 +145,13 @@ And for completeness sake, I have a static.json file that was required in the pr
 
 Once you have these files in place and ready, you should be good to push by whatever method you normally use to deply your app.
 
-#### Some notes
+#### Some random notes & observations
+
+- At the time of this writing, the above scripts properly build and deploy my VueJS CLI sites as was perviously handled by the heroku-buildpack-static build package, in production mode without hanging/failing dev dependencies. 
 
 - We are seeking to publish in "production" mode.
 
-- The build defaults to \dist folder, which should be a self-contained "bundle" (not really a bundle but that folder should be able to be easily copied and the dropped into a static site and served)
+- The build defaults to \dist folder, which should be a self-contained "bundle" (not really a bundle but that folder should be able to be easily copied and the dropped into a static site and served).
 
 - The VueJS CLI application, production build, builds to a static site.  Thus, no dev-dependencice should be flagged as "missing" when launching the app.
 
