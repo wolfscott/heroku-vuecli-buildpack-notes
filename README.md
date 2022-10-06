@@ -157,11 +157,13 @@ Once you have these files in place and ready, you should be good to push by what
 
 - We are seeking to publish in "production" mode.
 
-- The build defaults to \dist folder, which should be a self-contained "bundle" (not really a bundle but that folder should be able to be easily copied and the dropped into a static site and served).
+- We are seeking a simple deployment via automated GitHub checkin.
 
-- The VueJS CLI application, production build, builds to a static site.  Thus, no dev-dependencice should be flagged as "missing" when launching the app.
+- The build defaults to \dist folder, which should be a self-contained "bundle" (not really a bundle but that folder should be able to be easily copied and the dropped into a static site and served).  I mention this just to indicate "how" the results should behave and NOT how we're actually deploying.
 
-- Some have mentioned that after deployment that the @vue/cli-service package is not found. I've seen many recommendations, but remember that this package is a development-environment (dev dependency) so if this is being required, you are not serving your new app from the /dist folder, which is a pre-built static resource.
+- The VueJS CLI application, production build, builds to a static site.  Thus, no dev-dependencice should be flagged as "missing" when launching the app.  Again, just to reference what the results should look like.
+
+- Some have mentioned that after deployment that the @vue/cli-service package is not found.  (With other build solutions) I've seen many recommendations, but remember that this package is a development-environment (dev dependency) so if this is being required, you are not serving your new app from the /dist folder, which is a pre-built static resource.
 
 
 
